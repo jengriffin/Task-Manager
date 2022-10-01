@@ -1,27 +1,31 @@
-const tasks=[
+const tasks = [
   {
-    id:1,
+    id: 1,
     text: 'Water Plants',
     day: 'March 1st at 3:00',
-    reminder: true,
+    reminder: true
   },
   {
-    id:2,
+    id: 2,
     text: 'Fire Plants',
     day: 'March 31st at 3:00',
-    reminder: true,
+    reminder: true
   },
   {
-    id:3,
+    id: 3,
     text: 'Air Plants',
     day: 'June 31st at 3:00',
-    reminder: false,
+    reminder: false
   }
 ]
 
 const Tasks = () => {
   return (
-    {tasks.map((task)=>(<h3>{task.text}</h3>))}
+    <div>
+      {tasks.map((task) => (
+        <h3>{task.text}</h3>
+      ))}
+    </div>
   )
 }
 
