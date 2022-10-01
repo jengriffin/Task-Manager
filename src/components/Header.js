@@ -17,7 +17,9 @@ const Header = (props) => {
       <Typography variant="h1" className={classes.custom}>
         {props.title}
       </Typography>
-      <Buttons />
+      <Buttons color="primary" text="Add" />
+      <Buttons color="secondary" text="No" />
+      <Buttons color="primary" text="Yes" />
     </header>
   )
 }

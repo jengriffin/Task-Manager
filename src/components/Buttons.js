@@ -1,9 +1,9 @@
 import { Button } from '@material-ui/core'
 
-const Buttons = () => {
+const Buttons = ({ color, text }) => {
   return (
-    <Button variant="contained" color="primary">
-      Add
+    <Button variant="contained" color={color}>
+      {text}
     </Button>
   )
 }
