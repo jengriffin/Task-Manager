@@ -1,5 +1,6 @@
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
+import Buttons from './Buttons'
 const useStyles = makeStyles({
   custom: {
     color: '#0a2771',
@@ -10,11 +11,13 @@ const useStyles = makeStyles({
 
 const Header = (props) => {
   const classes = useStyles()
+
   return (
     <header>
       <Typography variant="h1" className={classes.custom}>
         {props.title}
       </Typography>
+      <Buttons />
     </header>
   )
 }
