@@ -24,10 +24,13 @@ function App() {
       reminder: false
     }
   ])
+  const deleteTask = (id) => {
+    console.log('yeet', id)
+  }
   return (
     <div className="App">
       <Header />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} onDelete={deleteTask} />
     </div>
   )
 }
