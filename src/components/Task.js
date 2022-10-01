@@ -1,6 +1,6 @@
-import { Paper, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
-import { Grid } from '@material-ui/core'
+import { Paper, Typography, Grid, makeStyles } from '@material-ui/core'
+
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 50
   }
 }))
-const Task = () => {
+
+const Task = ({ task }) => {
   const classes = useStyles()
   return (
     <Grid
@@ -27,7 +28,11 @@ const Task = () => {
     >
       <div className={classes.root}>
         <Paper className={classes.customBorderRadius} elevation={5}>
-          <Typography variant="h5">My Task</Typography>
+          <div className="popup">
+            <Typography variant="h5">{task.text}</Typography>
+            <Typography variant="p">{task.day}</Typography>
+            <Button className="clear">X</Button>
+          </div>
         </Paper>
       </div>
     </Grid>

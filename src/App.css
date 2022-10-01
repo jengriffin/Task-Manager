@@ -2,9 +2,18 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.clear{
+  opacity: 0;
+  
+}
+.popup:hover{
+  background-color: rgba(58, 1, 132, 0.44);
+  transition: all 0.4s ease-in-out;
+}
+.popup:hover button{
+  opacity: 1;
+  transform: translateY(-50px);
+  transition: all 0.2s ease-in-out;
 }
 
 @media (prefers-reduced-motion: no-preference) {
