@@ -11,13 +11,15 @@ const useStyles = makeStyles({
 
 const Header = (props) => {
   const classes = useStyles()
-
+  const onClick = () => {
+    console.log('click')
+  }
   return (
     <header>
       <Typography variant="h1" className={classes.custom}>
         {props.title}
       </Typography>
-      <Buttons color="primary" text="Add" />
+      <Buttons color="primary" text="Add" onClick={onClick} />
       <Buttons color="secondary" text="No" />
       <Buttons color="primary" text="Yes" />
     </header>
