@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'repeat(2, 1fr)',
     "&:hover": {
-      background: 'rgba(58, 1, 132, 0.7)',
+      background: '#8cb3c0',
       "& $task": {
         opacity: 0.25
       },
       "& $clearButton": {
-        color: "blue",
+        color: "white",
         opacity: 1
       }
     }
@@ -69,7 +69,6 @@ const Task = ({ task }) => {
               <Button className={classes.clearButton}>X</Button>
             </Grid>
           </div>
-
         </Paper>
       </div>
     </Grid>
