@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
       background: 'rgba(58, 1, 132, 0.7)',
       "& $task": {
         opacity: 0.25
+      },
+      "& $clearButton": {
+        color: "blue",
+        opacity: 1
       }
     }
   },
@@ -28,32 +32,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 50,
     gridArea: '1 / 1 / 2 / 2',
   },
-
   hoverButtonTray: {
     borderRadius: 50,
+    height: "100%",
     gridArea: '1 / 1 / 2 / 2',
-    "&:hover": {
-      "& $clearButton": {
-        color: "blue",
-        opacity: 1
-      }
-    },
   },
   clearButton: {
     opacity: 0
   },
-  hoverPaperMask: {
-    height: '100%',
-    borderRadius: 50,
-    opacity: .4,
-    backgroundColor: 'rgba(58, 1, 132, 0.44)',
-    transition: 'all 0.4s ease-in-out'
-  },
-  hidePaper: {
-    "&:hover": {
-      opacity: 0
-    }
-  }
 }))
 
 const Task = ({ task }) => {
