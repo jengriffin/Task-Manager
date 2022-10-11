@@ -30,7 +30,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTask} />
+      ) : (
+        'Chill Time!'
+      )}
     </div>
   )
 }
