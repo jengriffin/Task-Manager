@@ -14,32 +14,32 @@ const useStyles = makeStyles((theme) => ({
   },
   taskPaperParent: {
     borderRadius: 50,
-    display: "grid",
+    display: 'grid',
     gridTemplateColumns: '1fr',
     gridTemplateRows: 'repeat(2, 1fr)',
-    "&:hover": {
+    '&:hover': {
       background: '#8cb3c0',
-      "& $task": {
+      '& $task': {
         opacity: 0.25
       },
-      "& $clearButton": {
-        color: "white",
+      '& $clearButton': {
+        color: 'white',
         opacity: 1
       }
     }
   },
   task: {
     borderRadius: 50,
-    gridArea: '1 / 1 / 2 / 2',
+    gridArea: '1 / 1 / 2 / 2'
   },
   hoverButtonTray: {
     borderRadius: 50,
-    height: "100%",
-    gridArea: '1 / 1 / 2 / 2',
+    height: '100%',
+    gridArea: '1 / 1 / 2 / 2'
   },
   clearButton: {
     opacity: 0
-  },
+  }
 }))
 
 const Task = ({ task, onDelete }) => {
@@ -57,24 +57,25 @@ const Task = ({ task, onDelete }) => {
             <Typography variant="h5">{task.text}</Typography>
 
             <Typography variant="p">{task.day}</Typography>
-
           </div>
           <div className={classes.hoverButtonTray}>
             <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
             >
               <Button className={classes.clearButton}>X</Button>
               <Button className={classes.clearButton}>X</Button>
-              <Button className={classes.clearButton}>X</Button>
+              <Button
+                className={classes.clearButton}
+                onClick={() => onDelete(task.id)}
+              >
+                O
+              </Button>
             </Grid>
 
-            <Button className="clear" onClick={() => onDelete(task.id)}>
-              X
-            </Button>
-
+            <Button className="clear">X</Button>
           </div>
         </Paper>
       </div>
