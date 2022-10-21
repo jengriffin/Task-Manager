@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Task = ({ task, onDelete }) => {
+const Task = ({ task, onDelete, onToggle }) => {
   const classes = useStyles()
   return (
     <Grid
@@ -56,7 +56,7 @@ const Task = ({ task, onDelete }) => {
           <div className={classes.task}>
             <Typography variant="h5">{task.text}</Typography>
 
-            <Typography variant="p">{task.day}</Typography>
+            <Typography variant="body1">{task.day}</Typography>
           </div>
           <div className={classes.hoverButtonTray}>
             <Grid
@@ -66,7 +66,12 @@ const Task = ({ task, onDelete }) => {
               alignItems="center"
             >
               <Button className={classes.clearButton}>X</Button>
-              <Button className={classes.clearButton}>X</Button>
+              <Button
+                className={classes.clearButton}
+                onClick={() => onToggle(task.id)}
+              >
+                +
+              </Button>
               <Button
                 className={classes.clearButton}
                 onClick={() => onDelete(task.id)}
