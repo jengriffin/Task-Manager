@@ -12,6 +12,15 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(3)
     }
   },
+  reminder: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: theme.spacing(32),
+      height: theme.spacing(5),
+      backgroundColor: '#3EF0B8',
+      padding: theme.spacing(3)
+    }
+  },
   taskPaperParent: {
     borderRadius: 50,
     display: 'grid',
@@ -51,7 +60,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       justifyContent="center"
       alignItems="center"
     >
-      <div className={classes.root}>
+      <div className={`task${task.reminder ? 'reminder' : 'classes.root'}`}>
         <Paper className={classes.taskPaperParent} elevation={5}>
           <div className={classes.task}>
             <Typography variant="h5">{task.text}</Typography>
