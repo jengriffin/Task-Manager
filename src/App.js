@@ -76,7 +76,7 @@ function App() {
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
-  const [colorChange, setColorChange] = useState([])
+  // const [colorChange, setColorChange] = useState([])
 
   const toggleReminder = (id) => {
     setTasks(

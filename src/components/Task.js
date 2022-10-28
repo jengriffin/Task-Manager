@@ -60,7 +60,13 @@ const Task = ({ task, onDelete, onToggle }) => {
       justifyContent="center"
       alignItems="center"
     >
-      <div className={`task${task.reminder ? 'reminder' : 'classes.root'}`}>
+      <div
+        className={
+          /*classes.root*/ `task${
+            task.reminder ? classes.reminder : classes.root
+          }`
+        }
+      >
         <Paper className={classes.taskPaperParent} elevation={5}>
           <div className={classes.task}>
             <Typography variant="h5">{task.text}</Typography>
