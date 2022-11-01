@@ -62,9 +62,9 @@ const Task = ({ task, onDelete, onToggle }) => {
     >
       <div
         className={
-          /*classes.root*/ `task${
+          classes.root /*`task${
             task.reminder ? classes.reminder : classes.root
-          }`
+          }`*/
         }
       >
         <Paper className={classes.taskPaperParent} elevation={5}>
