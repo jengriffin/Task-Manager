@@ -2,6 +2,17 @@ import './App.css'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import { useState } from 'react'
+import { makeStyles } from '@material-ui/core'
+import AddTask from './components/AddTask'
+
+// import { ThemeProvider, createTheme } from '@material-ui/core/styles'
+// import CssBaseline from '@material-ui/core/CssBaseline'
+
+// const darkTheme = createTheme({
+//   palette: {
+//     mode: 'dark'
+//   }
+// })
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -27,17 +38,27 @@ function App() {
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
+  // const [colorChange, setColorChange] = useState([])
+
   const toggleReminder = (id) => {
-    console.log(id)
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    )
   }
   return (
     <div className="App">
+      {/* <ThemeProvider theme={darkTheme}>
+        <CssBaseline /> */}
       <Header />
+      <AddTask />
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
         'Chill Time!'
       )}
+      {/* </ThemeProvider> */}
     </div>
   )
 }
