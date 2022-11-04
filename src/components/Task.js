@@ -61,11 +61,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       alignItems="center"
     >
       <div
-        className={
-          classes.root /*`task${
-            task.reminder ? classes.reminder : classes.root
-          }`*/
-        }
+        className={`task ${task.reminder ? classes.reminder : classes.root}`}
       >
         <Paper className={classes.taskPaperParent} elevation={5}>
           <div className={classes.task}>
