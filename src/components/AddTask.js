@@ -3,7 +3,7 @@ import {
   FormControlLabel,
   TextField,
   FormGroup,
-  Typography
+  Button
 } from '@material-ui/core'
 
 const AddTask = () => {
@@ -11,8 +11,9 @@ const AddTask = () => {
     <FormGroup>
       <TextField label={'Add Task'} />
       <TextField label={'Day and Time'} />
-      <label> Set Reminder</label>
+
       <FormControlLabel label="Set Reminder" control={<Checkbox />} />
+      <Button color="primary">Submit </Button>
     </FormGroup>
   )
 }
