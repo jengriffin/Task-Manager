@@ -10,15 +10,9 @@ const AddTask = () => {
   return (
     <FormGroup>
       <TextField label={'Add Task'} />
-      <div className="form-control">
-        <label> Day and Time</label>
-        <input type="text" placeholder="Add Day and Time"></input>
-      </div>
-      <div className="form-control">
-        <label> Set Reminder</label>
-
-        <Checkbox />
-      </div>
+      <TextField label={'Day and Time'} />
+      <label> Set Reminder</label>
+      <FormControlLabel label="Set Reminder" control={<Checkbox />} />
     </FormGroup>
   )
 }
