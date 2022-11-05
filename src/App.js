@@ -5,15 +5,6 @@ import { useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 
-// import { ThemeProvider, createTheme } from '@material-ui/core/styles'
-// import CssBaseline from '@material-ui/core/CssBaseline'
-
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: 'dark'
-//   }
-// })
-
 function App() {
   const [tasks, setTasks] = useState([
     {
