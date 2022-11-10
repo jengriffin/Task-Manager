@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import { useState } from 'react'
 
-const AddTask = () => {
+const AddTask = ({ onAdd }) => {
   const [text, setText] = useState('')
   const [day, setDay] = useState('')
   const [reminder, setReminder] = useState(false)
@@ -16,8 +16,19 @@ const AddTask = () => {
   //   day:'',
   //   reminder: false}
   // )
+  const onSubmit = (e) => {
+    e.preventDefault()
+    if (!text) {
+      alert('Pleas add a task')
+      return
+    }
+    onAdd({ text, day, reminder })
+    setText('')
+    setDay('')
+    setReminder(false)
+  }
   return (
-    <FormGroup>
+    <FormGroup onSubmit={onSubmit}>
       <TextField
         label={'Add Task'}
         value={text}
@@ -33,6 +44,7 @@ const AddTask = () => {
         label="Set Reminder"
         control={
           <Checkbox
+            checked={reminder}
             value={reminder}
             onChange={(e) => setReminder(e.currentTarget.checked)}
           />
