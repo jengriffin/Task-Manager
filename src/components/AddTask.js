@@ -18,39 +18,46 @@ const AddTask = ({ onAdd }) => {
   // )
   const onSubmit = (e) => {
     e.preventDefault()
+
     if (!text) {
-      alert('Pleas add a task')
+      alert('Please add a task')
       return
     }
+
     onAdd({ text, day, reminder })
+
     setText('')
     setDay('')
     setReminder(false)
   }
   return (
-    <FormGroup onSubmit={onSubmit}>
-      <TextField
-        label={'Add Task'}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <TextField
-        label={'Day and Time'}
-        value={day}
-        onChange={(e) => setDay(e.target.value)}
-      />
+    <FormGroup>
+      <form onSubmit={onSubmit}>
+        <TextField
+          label={'Add Task'}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <TextField
+          label={'Day and Time'}
+          value={day}
+          onChange={(e) => setDay(e.target.value)}
+        />
 
-      <FormControlLabel
-        label="Set Reminder"
-        control={
-          <Checkbox
-            checked={reminder}
-            value={reminder}
-            onChange={(e) => setReminder(e.currentTarget.checked)}
-          />
-        }
-      />
-      <Button color="primary">Submit </Button>
+        <FormControlLabel
+          label="Set Reminder"
+          control={
+            <Checkbox
+              checked={reminder}
+              value={reminder}
+              onChange={(e) => setReminder(e.currentTarget.checked)}
+            />
+          }
+        />
+        <Button color="primary" type="submit">
+          Submit{' '}
+        </Button>
+      </form>
     </FormGroup>
   )
 }
