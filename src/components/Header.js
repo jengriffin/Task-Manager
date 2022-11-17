@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   }
 })
 
-const Header = (props, { onAdd }) => {
+const Header = (props, onAdd) => {
   const classes = useStyles()
 
   return (
@@ -17,7 +17,13 @@ const Header = (props, { onAdd }) => {
       <Typography variant="h1" className={classes.custom}>
         {props.title}
       </Typography>
-      <Buttons color="primary" text="Add" onClick={onAdd} />
+      <Buttons
+        color="primary"
+        text="Add"
+        onClick={(e) => {
+          onAdd
+        }}
+      />
       <Buttons color="secondary" text="No" />
       <Buttons color="primary" text="Yes" />
     </header>
