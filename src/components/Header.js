@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   }
 })
 
-const Header = (props, { showAdd, onAdd }) => {
+const Header = ({ showAdd, onAdd }, props) => {
   const classes = useStyles()
 
   return (

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 
 function App() {
-  const [showAddTask, setShowAddTask] = useState(true)
+  const [showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -43,14 +43,14 @@ function App() {
       )
     )
   }
+  const onAdd = () => {
+    setShowAddTask(!showAddTask)
+  }
   return (
     <div className="App">
       {/* <ThemeProvider theme={darkTheme}>
         <CssBaseline /> */}
-      <Header
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd={showAddTask}
-      />
+      <Header onAdd={onAdd} showAdd={showAddTask} />
 
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
