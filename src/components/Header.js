@@ -22,8 +22,6 @@ const Header = (props) => {
         text={props.showAdd ? 'Close' : 'Add'}
         onClick={props.onAdd}
       />
-      <Buttons color="secondary" text="No" />
-      <Buttons color="primary" text="Yes" />
     </header>
   )
 }

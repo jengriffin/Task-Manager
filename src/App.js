@@ -48,8 +48,6 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <ThemeProvider theme={darkTheme}>
-        <CssBaseline /> */}
       <Header onAdd={onAdd} showAdd={showAddTask} />
 
       {showAddTask && <AddTask onAdd={addTask} />}
@@ -58,7 +56,6 @@ function App() {
       ) : (
         'Chill Time!'
       )}
-      {/* </ThemeProvider> */}
     </div>
   )
 }
