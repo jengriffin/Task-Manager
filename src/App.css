@@ -28,4 +28,6 @@
   color: #61dafb;
 }
 
-
+img{
+  max-width: 5vw;
+}

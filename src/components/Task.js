@@ -76,18 +76,26 @@ const Task = ({ task, onDelete, onToggle }) => {
               justifyContent="center"
               alignItems="center"
             >
-              <Button className={classes.clearButton}>X</Button>
+              <Button className={classes.clearButton}>
+                <img src="https://img.icons8.com/ios/512/pencil.png" />
+              </Button>
               <Button
                 className={classes.clearButton}
                 onClick={() => onToggle(task.id)}
               >
-                +
+                <img
+                  src="https://img.icons8.com/ios/512/reminder.png"
+                  alt="a hand with a finger raised and a bow tied around it"
+                />
               </Button>
               <Button
                 className={classes.clearButton}
                 onClick={() => onDelete(task.id)}
               >
-                O
+                <img
+                  src="https://img.icons8.com/ios-filled/512/checkmark--v2.png"
+                  alt="a black checkmark"
+                />
               </Button>
             </Grid>
 
