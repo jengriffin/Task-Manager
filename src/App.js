@@ -54,7 +54,10 @@ function App() {
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
-        'Chill Time!'
+        <img
+          src="https://media.giphy.com/media/FRGzlnvEMuvOo/giphy.gif"
+          className="chill"
+        />
       )}
     </div>
   )
