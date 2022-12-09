@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Task = ({ task, onDelete, onToggle }) => {
+const Task = ({ task, onDelete, onToggle, editTask }) => {
   const classes = useStyles()
   return (
     <Grid
@@ -82,6 +82,7 @@ const Task = ({ task, onDelete, onToggle }) => {
               <Button
                 className={classes.clearButton}
                 onClick={() => onToggle(task.id)}
+                onClick={editTask}
               >
                 <img
                   src="https://img.icons8.com/ios/512/reminder.png"
