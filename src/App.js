@@ -46,6 +46,9 @@ function App() {
   const onAdd = () => {
     setShowAddTask(!showAddTask)
   }
+  const editTask = () => {
+    setEditTask(!editTask)
+  }
   return (
     <div className="App">
       <Header onAdd={onAdd} showAdd={showAddTask} />
