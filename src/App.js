@@ -7,6 +7,7 @@ import AddTask from './components/AddTask'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
+  const [showEditTask, setEditTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -55,7 +56,12 @@ function App() {
 
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+        <Tasks
+          tasks={tasks}
+          onDelete={deleteTask}
+          onToggle={toggleReminder}
+          onEdit={editTask}
+        />
       ) : (
         <img
           src="https://media.giphy.com/media/FRGzlnvEMuvOo/giphy.gif"
