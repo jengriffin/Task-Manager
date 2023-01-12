@@ -15,17 +15,6 @@ const EditTask = ({ onAdd }) => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (!text) {
-      alert('Please add a task')
-      return
-    }
-
-    onAdd({ text, day, reminder })
-
-    setText('')
-    setDay('')
-    setReminder(false)
-  }
   return (
     <FormGroup>
       <form onSubmit={onSubmit}>

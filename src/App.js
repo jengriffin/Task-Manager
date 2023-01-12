@@ -4,10 +4,11 @@ import Tasks from './components/Tasks'
 import { useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
+import EditTask from './components/EditTask'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [showEditTask, setEditTask] = useState(false)
+  const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -47,8 +48,8 @@ function App() {
   const onAdd = () => {
     setShowAddTask(!showAddTask)
   }
-  const editTask = () => {
-    setEditTask(!editTask)
+  const editTask = (id) => {
+    setShowEditTask(!showEditTask)
   }
   return (
     <div className="App">
@@ -61,6 +62,7 @@ function App() {
           onDelete={deleteTask}
           onToggle={toggleReminder}
           onEdit={editTask}
+          showEditTask={showEditTask}
         />
       ) : (
         <img
@@ -68,6 +70,7 @@ function App() {
           className="chill"
         />
       )}
+      {setShowEditTask && <EditTask onEdit={showEdit} />}
     </div>
   )
 }
