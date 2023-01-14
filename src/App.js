@@ -21,10 +21,9 @@ function App() {
       } catch (err) {
         console.log(err)
       }
-
-      console.log(BASE_URL)
     }
     getTasks()
+    console.log(BASE_URL)
   }, [])
 
   const addTask = (task) => {
