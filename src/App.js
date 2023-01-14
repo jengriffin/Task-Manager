@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
 import BASE_URL from './globals'
+import axios from 'axios'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -13,9 +14,10 @@ function App() {
   const [tasks, setTasks] = useState([])
   useEffect(() => {
     const getTasks = async () => {
-      const res = await fetch(BASE_URL)
-      const data = await res.json()
-      console.log(data)
+      let res = await axios.get(BASE_URL)
+      setTasks(res.data)
+      console.log(BASE_URL)
+      console.log(res.data)
     }
     getTasks()
   }, [])
