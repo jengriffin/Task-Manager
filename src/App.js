@@ -15,7 +15,9 @@ function App() {
   useEffect(() => {
     const getTasks = async () => {
       try {
-        let res = await axios.get(BASE_URL)
+        let res = await axios.get(BASE_URL, {
+          headers: { 'Accept-Encoding': 'application/json' }
+        })
         setTasks(res.data)
         console.log(res.data)
       } catch (err) {
