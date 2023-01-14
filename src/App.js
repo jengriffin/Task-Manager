@@ -1,32 +1,31 @@
 import './App.css'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
+import EditTask from './components/EditTask'
+import BASE_URL from './globals'
+import axios from 'axios'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Water Plants',
-      day: 'March 1st at 3:00',
-      reminder: true
-    },
-    {
-      id: 2,
-      text: 'Fire Plants',
-      day: 'March 31st at 3:00',
-      reminder: true
-    },
-    {
-      id: 3,
-      text: 'Air Plants',
-      day: 'June 31st at 3:00',
-      reminder: false
+  const [showEditTask, setShowEditTask] = useState(false)
+  const [tasks, setTasks] = useState([])
+  useEffect(() => {
+    const getTasks = async () => {
+      try {
+        let res = await axios.get(`http://127.0.0.1:8000/task`)
+        setTasks(res.data)
+        console.log(res.data)
+      } catch (err) {
+        console.log(err)
+      }
     }
-  ])
+    getTasks()
+    console.log(BASE_URL)
+  }, [])
+
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newTask = { id, ...task }
@@ -46,19 +45,29 @@ function App() {
   const onAdd = () => {
     setShowAddTask(!showAddTask)
   }
+  const editTask = (id) => {
+    setShowEditTask(!showEditTask)
+  }
   return (
     <div className="App">
       <Header onAdd={onAdd} showAdd={showAddTask} />
 
       {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+        <Tasks
+          tasks={tasks}
+          onDelete={deleteTask}
+          onToggle={toggleReminder}
+          onEdit={editTask}
+          showEditTask={showEditTask}
+        />
       ) : (
         <img
           src="https://media.giphy.com/media/FRGzlnvEMuvOo/giphy.gif"
           className="chill"
         />
       )}
+      {/* {setShowEditTask && <EditTask onEdit={showEdit} />} */}
     </div>
   )
 }
