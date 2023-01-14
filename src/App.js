@@ -14,10 +14,15 @@ function App() {
   const [tasks, setTasks] = useState([])
   useEffect(() => {
     const getTasks = async () => {
-      let res = await axios.get(BASE_URL)
-      setTasks(res.data)
+      try {
+        let res = await axios.get(BASE_URL)
+        setTasks(res.data)
+        console.log(res.data)
+      } catch (err) {
+        console.log(err)
+      }
+
       console.log(BASE_URL)
-      console.log(res.data)
     }
     getTasks()
   }, [])
