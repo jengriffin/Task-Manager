@@ -1,7 +1,7 @@
 import './App.css'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
@@ -11,11 +11,15 @@ function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
-  const getTasks = async () => {
-    const res = await fetch(BASE_URL)
-    const data = await res.json()
-    console.log(data)
-  }
+  useEffect(() => {
+    const getTasks = async () => {
+      const res = await fetch(BASE_URL)
+      const data = await res.json()
+      console.log(data)
+    }
+    getTasks()
+  }, [])
+
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newTask = { id, ...task }
@@ -57,7 +61,7 @@ function App() {
           className="chill"
         />
       )}
-      {setShowEditTask && <EditTask onEdit={showEdit} />}
+      {/* {setShowEditTask && <EditTask onEdit={showEdit} />} */}
     </div>
   )
 }
