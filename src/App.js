@@ -5,30 +5,17 @@ import { useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
+import BASE_URL from './globals'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showEditTask, setShowEditTask] = useState(false)
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Water Plants',
-      day: 'March 1st at 3:00',
-      reminder: true
-    },
-    {
-      id: 2,
-      text: 'Fire Plants',
-      day: 'March 31st at 3:00',
-      reminder: true
-    },
-    {
-      id: 3,
-      text: 'Air Plants',
-      day: 'June 31st at 3:00',
-      reminder: false
-    }
-  ])
+  const [tasks, setTasks] = useState([])
+  const getTasks = async () => {
+    const res = await fetch(BASE_URL)
+    const data = await res.json()
+    console.log(data)
+  }
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newTask = { id, ...task }
