@@ -17,10 +17,7 @@ function App() {
       try {
         let res = await axios.get(`http://127.0.0.1:8000/task`)
         setTasks(res.data)
-        console.log(res.data)
-      } catch (err) {
-        console.log(err)
-      }
+      } catch (err) {}
     }
     getTasks()
   }, [])
