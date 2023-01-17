@@ -23,7 +23,6 @@ function App() {
       }
     }
     getTasks()
-    console.log(BASE_URL)
   }, [])
 
   const addTask = (task) => {
