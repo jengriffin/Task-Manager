@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const Task = ({ task, onDelete, onToggle, onEdit }) => {
   const test = (id) => {}
   const classes = useStyles()
+
   return (
     <Grid
       container
@@ -62,6 +63,7 @@ const Task = ({ task, onDelete, onToggle, onEdit }) => {
       alignItems="center"
     >
       <div
+        //error on under line
         className={`task ${task.reminder ? classes.reminder : classes.root}`}
       >
         <Paper className={classes.taskPaperParent} elevation={5}>

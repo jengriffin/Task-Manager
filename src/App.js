@@ -12,6 +12,7 @@ function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
+
   useEffect(() => {
     const getTasks = async () => {
       try {
