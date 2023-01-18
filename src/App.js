@@ -28,8 +28,9 @@ function App() {
     const newTask = { id, ...task }
     setTasks([...tasks, newTask])
   }
-  const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id))
+  const deleteTask = async () => {
+    let res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, formState)
+    alert('Checked that off the list!')
   }
 
   const toggleReminder = (id) => {
