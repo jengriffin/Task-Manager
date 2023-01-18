@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const Task = ({ task, onDelete, onToggle, onEdit }) => {
   const test = (id) => {}
   const classes = useStyles()
+
   return (
     <Grid
       container
