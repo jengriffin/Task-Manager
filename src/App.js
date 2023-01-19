@@ -7,11 +7,13 @@ import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
 import BASE_URL from './globals'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false)
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
+  let { id } = useParams()
 
   useEffect(() => {
     const getTasks = async () => {
@@ -29,7 +31,7 @@ function App() {
     setTasks([...tasks, newTask])
   }
   const deleteTask = async () => {
-    let res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, formState)
+    let res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, useState)
     alert('Checked that off the list!')
   }
 
