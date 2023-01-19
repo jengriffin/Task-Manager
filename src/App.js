@@ -14,7 +14,7 @@ function App() {
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
   let { id } = useParams()
-  console.log()
+  const API_HOST = 'http://127.0.0.1:8000/'
   useEffect(() => {
     const getTasks = async () => {
       try {
