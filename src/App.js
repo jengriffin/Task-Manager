@@ -14,7 +14,7 @@ function App() {
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
   let { id } = useParams()
-
+  console.log()
   useEffect(() => {
     const getTasks = async () => {
       try {
@@ -30,9 +30,14 @@ function App() {
     const newTask = { id, ...task }
     setTasks([...tasks, newTask])
   }
-  const deleteTask = async () => {
-    let res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, useState)
-    alert('Checked that off the list!')
+  const deleteTask = async (id) => {
+    const res = await fetch(`http://127.0.0.1:8000/task/${id}`, {
+      method: 'DELETE'
+    })
+    //We should control the response status to decide if we will change the state or not.
+    res.status === 200
+      ? setTasks(tasks.filter((task) => task.id !== id))
+      : alert('Error Deleting This Task')
   }
 
   const toggleReminder = (id) => {
