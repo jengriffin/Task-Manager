@@ -14,7 +14,7 @@ function App() {
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
   let { id } = useParams()
-  const API_HOST = 'http://127.0.0.1:8000/'
+  const API_HOST = 'http://127.0.0.1:8000'
   useEffect(() => {
     const getTasks = async () => {
       try {
@@ -24,7 +24,20 @@ function App() {
     }
     getTasks()
   }, [])
+  let _csrfToken = null
 
+  async function getCsrfToken() {
+    if (_csrfToken === null) {
+      const response = await fetch(`${API_HOST}/csrf`, {
+        credentials: 'include'
+      })
+      const data = await response.json()
+      _csrfToken = data.csrfToken
+      console.log(_csrfToken)
+    }
+    return _csrfToken
+  }
+  getCsrfToken()
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newTask = { id, ...task }
