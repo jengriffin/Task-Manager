@@ -18,7 +18,9 @@ function App() {
   useEffect(() => {
     const getTasks = async () => {
       try {
-        let res = await axios.get(`http://127.0.0.1:8000/task`)
+        let res = await axios.get(`http://127.0.0.1:8000/task`, {
+          credentials: 'include'
+        })
         setTasks(res.data)
       } catch (err) {}
     }
@@ -26,18 +28,27 @@ function App() {
   }, [])
   let _csrfToken = null
 
-  async function getCsrfToken() {
-    if (_csrfToken === null) {
-      const response = await fetch(`${API_HOST}/csrf`, {
-        credentials: 'include'
-      })
-      const data = await response.json()
-      _csrfToken = data.csrfToken
-      console.log(_csrfToken)
+  function getCookie(name) {
+    let cookieValue = null
+
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';')
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim()
+
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === name + '=') {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+
+          break
+        }
+      }
     }
-    return _csrfToken
+
+    return cookieValue
   }
-  getCsrfToken()
+  const csrftoken = getCookie('csrftoken')
+  console.log(csrftoken)
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
     const newTask = { id, ...task }
