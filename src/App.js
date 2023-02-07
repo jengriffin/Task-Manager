@@ -2,7 +2,6 @@ import './App.css'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import { useEffect, useState } from 'react'
-import { makeStyles } from '@material-ui/core'
 import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
 import BASE_URL from './globals'
@@ -14,20 +13,6 @@ function App() {
   const [showEditTask, setShowEditTask] = useState(false)
   const [tasks, setTasks] = useState([])
   let { id } = useParams()
-  const API_HOST = 'http://127.0.0.1:8000'
-  useEffect(() => {
-    const getTasks = async () => {
-      try {
-        let res = await axios.get(`http://127.0.0.1:8000/task`, {
-          credentials: 'include'
-        })
-        setTasks(res.data)
-      } catch (err) {}
-    }
-    getTasks()
-  }, [])
-  let _csrfToken = null
-
   function getCookie(name) {
     let cookieValue = null
 
@@ -48,6 +33,19 @@ function App() {
     return cookieValue
   }
   const csrftoken = getCookie('csrftoken')
+  useEffect(() => {
+    const getTasks = async () => {
+      try {
+        let res = await axios.get(`http://127.0.0.1:8000/task`, {
+          credentials: 'include'
+        })
+        setTasks(res.data)
+      } catch (err) {}
+    }
+    getTasks()
+    getCookie('csrftoken')
+  }, [])
+
   console.log(csrftoken)
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1
@@ -55,8 +53,13 @@ function App() {
     setTasks([...tasks, newTask])
   }
   const deleteTask = async (id) => {
-    const res = await fetch(`http://127.0.0.1:8000/task/${id}`, {
-      method: 'DELETE'
+    const res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+      }
     })
     //We should control the response status to decide if we will change the state or not.
     res.status === 200
