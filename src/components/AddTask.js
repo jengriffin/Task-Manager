@@ -6,19 +6,31 @@ import {
   Button
 } from '@material-ui/core'
 import { useState } from 'react'
+import csrftoken from '../csrftoken'
+import {BASE_URL} from "../globals";
 
 const AddTask = ({ onAdd }) => {
   const [text, setText] = useState('')
   const [day, setDay] = useState('')
   const [reminder, setReminder] = useState(false)
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault()
 
     if (!text) {
       alert('Please add a task')
       return
     }
+    await axios({
+      url:`${BASE_URL}/${id}`,
+      method:'PUT',
+      data: formState,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken,
+        'X-Requested-With': 'XMLHttpRequest',
+      },
 
     onAdd({ text, day, reminder })
 
