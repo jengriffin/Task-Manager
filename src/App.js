@@ -47,11 +47,7 @@ function App() {
   }, [])
 
   console.log(csrftoken)
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1
-    const newTask = { id, ...task }
-    setTasks([...tasks, newTask])
-  }
+
   const deleteTask = async (id) => {
     const res = await axios.delete(`http://127.0.0.1:8000/task/${id}`, {
       method: 'DELETE',
@@ -73,6 +69,10 @@ function App() {
         task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     )
+  }
+  const addTask = (task) => {
+    const newTask = { id, ...task }
+    setTasks([...tasks, newTask])
   }
   const onAdd = () => {
     setShowAddTask(!showAddTask)

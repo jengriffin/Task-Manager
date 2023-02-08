@@ -8,6 +8,9 @@ import {
 import { useState } from 'react'
 import csrftoken from '../csrftoken'
 import {BASE_URL} from "../globals";
+import {useParams} from "react-router-dom";
+import {BaseURL} from '/globals'
+import axios from "axios";
 
 const AddTask = ({ onAdd }) => {
   // const [text, setText] = useState('')
@@ -19,7 +22,10 @@ const AddTask = ({ onAdd }) => {
         reminder: false
   }
 const[formState, setFormState]=useState(initalState)
-
+  let{id}= useParams()
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value })
+  }
   const onSubmit = async(e) => {
     e.preventDefault()
 
@@ -28,8 +34,8 @@ const[formState, setFormState]=useState(initalState)
       return
     }
     await axios({
-      url:`${BASE_URL}/${id}`,
-      method:'PUT',
+      url: `${BASE_URL}/${id}`,
+      method: 'PUT',
       data: formState,
       headers: {
         'Accept': 'application/json',
@@ -37,25 +43,27 @@ const[formState, setFormState]=useState(initalState)
         'X-CSRFToken': csrftoken,
         'X-Requested-With': 'XMLHttpRequest',
       },
-
-    onAdd({ text, day, reminder })
-
-    setText('')
-    setDay('')
-    setReminder(false)
+    })
+    setFormState(initalState)
   }
+    // onAdd({ text, day, reminder })
+
+    // setText('')
+    // setDay('')
+    // setReminder(false)
+
   return (
     <FormGroup>
       <form onSubmit={onSubmit}>
         <TextField
           label={'Add Task'}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={formState.text}
+          onChange={handleChange}
         />
         <TextField
           label={'Day and Time'}
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
+          value={formState.day}
+          onChange={handleChange}
         />
 
         <FormControlLabel
@@ -63,8 +71,8 @@ const[formState, setFormState]=useState(initalState)
           control={
             <Checkbox
               checked={reminder}
-              value={reminder}
-              onChange={(e) => setReminder(e.currentTarget.checked)}
+              value={formState.reminder}
+              onChange={handleChange}
             />
           }
         />
@@ -74,7 +82,7 @@ const[formState, setFormState]=useState(initalState)
       </form>
     </FormGroup>
   )
-}
+
 }
 
 export default AddTask
