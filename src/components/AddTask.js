@@ -10,9 +10,15 @@ import csrftoken from '../csrftoken'
 import {BASE_URL} from "../globals";
 
 const AddTask = ({ onAdd }) => {
-  const [text, setText] = useState('')
-  const [day, setDay] = useState('')
-  const [reminder, setReminder] = useState(false)
+  // const [text, setText] = useState('')
+  // const [day, setDay] = useState('')
+  // const [reminder, setReminder] = useState(false)
+  const initalState={
+      text:'',
+      day:'',
+        reminder: false
+  }
+const[formState, setFormState]=useState(initalState)
 
   const onSubmit = async(e) => {
     e.preventDefault()
@@ -68,6 +74,7 @@ const AddTask = ({ onAdd }) => {
       </form>
     </FormGroup>
   )
+}
 }
 
 export default AddTask
