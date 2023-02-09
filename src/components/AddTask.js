@@ -7,9 +7,8 @@ import {
 } from '@material-ui/core'
 import { useState } from 'react'
 import csrftoken from '../csrftoken'
-import {BASE_URL} from "../globals";
 import {useParams} from "react-router-dom";
-import {BaseURL} from '/globals'
+import {BASE_URL} from '/globals'
 import axios from "axios";
 
 const AddTask = ({ onAdd }) => {
@@ -33,6 +32,10 @@ const[formState, setFormState]=useState(initalState)
       alert('Please add a task')
       return
     }
+    const form_data= new FormData()
+    form_data.append('text', formState.text)
+    form_data.append('day', formState.day)
+    form_data.append('reminder',)
     await axios({
       url: `${BASE_URL}/${id}`,
       method: 'PUT',

@@ -4,7 +4,7 @@ import Tasks from './components/Tasks'
 import { useEffect, useState } from 'react'
 import AddTask from './components/AddTask'
 import EditTask from './components/EditTask'
-import BASE_URL from './globals'
+
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
